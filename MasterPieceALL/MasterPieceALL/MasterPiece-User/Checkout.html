@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Sparlex - Spa Website Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="" name="keywords" />
+    <meta content="" name="description" />
+    <style>
+      .card.shadow.border {
+        position: relative;
+        left: 30%;
+      }
+    </style>
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=PT+Serif:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Icon Font Stylesheet -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet" />
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet" />
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <!-- Spinner Start -->
+    <div
+      id="spinner"
+      class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50 d-flex align-items-center justify-content-center"
+    >
+      <div class="spinner-grow text-primary" role="status"></div>
+    </div>
+    <!-- Spinner End -->
+
+    <!-- Navbar start -->
+    <div class="container-fluid sticky-top px-0">
+      <div class="container-fluid bg-light">
+        <div class="container px-0">
+          <nav class="navbar navbar-light navbar-expand-xl">
+            <img src="img/IMGinLogo (2).png" class="imginlogo" alt="Image" />
+            <a href="index.html" class="navbar-brand">
+              <h1 class="navHI">Little princesses</h1>
+            </a>
+            <button
+              class="navbar-toggler py-2 px-3"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarCollapse"
+            >
+              <span class="fa fa-bars text-primary"></span>
+            </button>
+            <div
+              class="collapse navbar-collapse bg-light py-3"
+              id="navbarCollapse"
+            >
+              <div class="navbar-nav mx-auto border-top">
+                <a href="index.html" class="nav-item nav-link">Home</a>
+                <li class="nav-item">
+                  <a class="nav-link" href="Shop.html">Shop</a>
+                </li>
+                <a href="Adventure0.html" class="nav-item nav-link"
+                  >Adventure</a
+                >
+                <a href="Design.html" class="nav-item nav-link">Design</a>
+                <a href="About-page.html" class="nav-item nav-link">About</a>
+                <a href="Contact-page.html" class="nav-item nav-link"
+                  >Contact</a
+                >
+
+                <div id="userLinks"></div>
+                <!-- for login or logout -->
+              </div>
+            </div>
+
+            <div class="d-flex align-items-center flex-nowrap pt-xl-0">
+              <button
+                class="btn-search"
+                data-bs-toggle="modal"
+                data-bs-target="#searchModal"
+                style="
+                  background: none;
+                  border: none;
+                  padding: 5px;
+                  color: #333;
+                  transition: color 0.3s ease;
+                "
+                onmouseover="this.style.color='#ff69b4';"
+                onmouseout="this.style.color='#333';"
+              >
+                <i class="fas fa-search"></i>
+              </button>
+              <a
+                href="Cart-page.html"
+                class="ms-4 position-relative"
+                style="
+                  background: none;
+                  border: none;
+                  padding: 5px;
+                  color: #333;
+                  transition: color 0.3s ease;
+                "
+                onmouseover="this.style.color='#ff69b4';"
+                onmouseout="this.style.color='#333';"
+              >
+                <i class="fas fa-shopping-cart"></i>
+              </a>
+
+              <!-- زر تسجيل الخروج يظهر فقط إذا كان هناك userId -->
+              <button
+                id="logoutButton"
+                class="btn-logout"
+                style="
+                  position: relative;
+                  left: 20px;
+                  background: none;
+                  border: none;
+                  padding: 0 10px;
+                  color: #333;
+                  transition: color 0.3s ease;
+                  display: none;
+                "
+                onmouseover="this.style.color='#ff69b4';"
+                onmouseout="this.style.color='#333';"
+                onclick="logout()"
+              >
+                <i class="fas fa-sign-out-alt"></i>
+              </button>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <!-- Navbar End -->
+
+    <!-- Modal Search Start -->
+    <div
+      class="modal fade"
+      id="searchModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content rounded-0">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              Search by keyword
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body d-flex align-items-center">
+            <div class="input-group w-75 mx-auto d-flex">
+              <input
+                type="search"
+                class="form-control p-3"
+                placeholder="keywords"
+                aria-describedby="search-icon-1"
+              />
+              <span id="search-icon-1" class="input-group-text p-3"
+                ><i class="fa fa-search"></i
+              ></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal Search End -->
+
+    <!-- order Start -->
+
+    <div
+      class="container vh-100 d-flex justify-content-center align-items-center"
+    >
+      <div class="row">
+        <div class="col-xl-8 col-lg-8 mb-4">
+          <!-- Checkout -->
+          <div class="card shadow border">
+            <div class="p-4">
+              <h5 class="card-title mb-3">User Information</h5>
+              <div class="row">
+                <div class="col-6 mb-3">
+                  <p class="mb-0">First name</p>
+                  <div class="form-outline">
+                    <input
+                      type="text"
+                      id="firstName"
+                      name="firstName"
+                      placeholder="Type here"
+                      class="form-control"
+                    />
+                  </div>
+                </div>
+
+                <div class="col-6">
+                  <p class="mb-0">Last name</p>
+                  <div class="form-outline">
+                    <input
+                      type="text"
+                      id="lastName"
+                      name="lastName"
+                      placeholder="Type here"
+                      class="form-control"
+                    />
+                  </div>
+                </div>
+
+                <div class="col-6 mb-3">
+                  <p class="mb-0">Phone</p>
+                  <div class="form-outline">
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phoneNumber"
+                      value="(+962) "
+                      class="form-control"
+                    />
+                  </div>
+                </div>
+
+                <div class="col-6 mb-3">
+                  <p class="mb-0">Email</p>
+                  <div class="form-outline">
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      placeholder="yourEmail@gmail.com"
+                      class="form-control"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <hr class="my-4" />
+
+              <div class="row">
+                <h5 class="card-title mb-3">User Address</h5>
+                <div class="col-sm-8 mb-3">
+                  <p class="mb-0">Country</p>
+                  <div class="form-outline">
+                    <input
+                      type="text"
+                      id="country"
+                      placeholder="Type here"
+                      class="form-control"
+                      name="Country"
+                    />
+                  </div>
+                </div>
+
+                <div class="col-sm-4 mb-3">
+                  <p class="mb-0">City</p>
+                  <div class="form-outline">
+                    <input
+                      type="text"
+                      id="city"
+                      placeholder="Type here"
+                      class="form-control"
+                      name="City"
+                    />
+                  </div>
+                </div>
+
+                <div class="col-sm-4 mb-3">
+                  <p class="mb-0">Street</p>
+                  <div class="form-outline">
+                    <input
+                      type="text"
+                      id="street"
+                      placeholder="Type here"
+                      class="form-control"
+                      name="Street"
+                    />
+                  </div>
+                </div>
+
+                <div class="col-sm-4 col-6 mb-3">
+                  <p class="mb-0">Postal code</p>
+                  <div class="form-outline">
+                    <input
+                      type="text"
+                      id="postalCode"
+                      class="form-control"
+                      placeholder="Type here"
+                      name="PostalCode"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div class="float-end">
+                <button
+                  class="btn btn-success shadow-0 border"
+                  onclick="addAdress()"
+                >
+                  continue
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Checkout -->
+        </div>
+      </div>
+    </div>
+
+    <!-- order End -->
+
+    <!-- Footer Start -->
+    <div class="footer-container">
+      <div class="footer-title">Little princesses</div>
+
+      <div class="footer-copyright">
+        @COPYRIGHT 2O24 Little princesses. ALL RIGHTS RESERVED.
+      </div>
+
+      <a href="index.html" class="footer-link">Home</a>
+      <a href="Adventure0.html" class="footer-link">Adventure</a>
+      <a href="#.html" class="footer-link"> Privacy-Policy</a>
+      <a href="About-page.html" class="footer-link">About</a>
+      <a href="Design.html" class="footer-link">Design</a>
+      <a href="Contact-page.html" class="footer-link">Contact</a>
+      <a href="Account-page.html" class="footer-link">Account</a>
+      <a href="Shop.html" class="footer-link">Shop</a>
+
+      <div class="col-md-4">
+        <div class="d-flex justify-content-center">
+          <a
+            href="https://www.facebook.com/profile.php?id=100007446424666&mibextid=ZbWKwL"
+            class="btn btn-light btn-light-outline-0 btn-sm-square rounded-circle me-2"
+            ><i class="fab fa-facebook-f"></i
+          ></a>
+
+          <a
+            href="https://www.instagram.com/raneem_alawneh?igsh=OWcycmp0MWw1M2Nw"
+            class="btn btn-light btn-light-outline-0 btn-sm-square rounded-circle me-2"
+            ><i class="fab fa-instagram"></i
+          ></a>
+
+          <div class="footer-copyright">
+            @COPYRIGHT 2O24 Little princesses. ALL RIGHTS RESERVED.
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Footer End -->
+
+    <!-- Back to Top -->
+    <a
+      href="#"
+      class="btn btn-primary btn-primary-outline-0 btn-md-square rounded-circle back-to-top"
+      ><i class="fa fa-arrow-up"></i
+    ></a>
+
+    <script>
+      // for profile and logout icon
+      function renderUserLinks() {
+        const userId = localStorage.getItem("userId");
+        const userLinksContainer = document.getElementById("userLinks");
+        const logoutButton = document.getElementById("logoutButton");
+
+        if (userId) {
+          // عند تسجيل الدخول، يظهر رابط "Profile" بدلاً من "Account"
+          userLinksContainer.innerHTML = `
+                <a href="Profile-page.html" class="nav-item nav-link">Profile</a>
+            `;
+          // يظهر زر تسجيل الخروج
+          logoutButton.style.display = "block";
+        } else {
+          // عند عدم تسجيل الدخول، يظهر رابط "Account"
+          userLinksContainer.innerHTML = `
+                <a href="Account-page.html" class="nav-item nav-link">Account</a>
+            `;
+          // يخفي زر تسجيل الخروج
+          logoutButton.style.display = "none";
+        }
+      }
+
+      function logout() {
+        localStorage.removeItem("userId");
+        localStorage.removeItem("Token");
+        renderUserLinks();
+        window.location.href = "Account-page.html";
+      }
+
+      // استدعاء الدالة عند تحميل الصفحة
+      document.addEventListener("DOMContentLoaded", renderUserLinks);
+    </script>
+    <!-- JavaScript Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/lightbox/js/lightbox.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+    <script src="js/Checkout.js"></script>
+  </body>
+</html>

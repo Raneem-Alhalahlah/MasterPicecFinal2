@@ -1,0 +1,6 @@
+@MasterPieceALL_HostAddress = http://localhost:5041
+
+GET {{MasterPieceALL_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
